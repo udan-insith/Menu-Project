@@ -87,6 +87,31 @@ const container = document.querySelector(".btn-container")
 //load items
 window.addEventListener('DOMContentLoaded', function() {
   displayMenuItems(menu)
+  displayMenuBtns()
+})
+
+
+
+function displayMenuItems(menuItems) {
+  let displayMenu = menuItems.map(function(item) {
+    return `<article class="menu-item">
+            <img src="${item.img}" class="photo" alt="${item.title}">
+            <div class="item-info">
+              <header>
+                <h4>${item.title}</h4>
+                <h4 class="price">$${item.price}</h4>
+              </header>
+              <p class="item-text">${item.desc}</p>
+            </div>
+           </article>`
+  })
+  displayMenu = displayMenu.join("")
+  sectionCenter.innerHTML = displayMenu
+}
+
+
+
+function displayMenuBtns() {
   const categories = menu.reduce(function(values, item) {
     if(!values.includes(item.category)) {
       values.push(item.category)
@@ -118,25 +143,6 @@ window.addEventListener('DOMContentLoaded', function() {
       }
     })
   })
-})
-
-
-
-function displayMenuItems(menuItems) {
-  let displayMenu = menuItems.map(function(item) {
-    return `<article class="menu-item">
-            <img src="${item.img}" class="photo" alt="${item.title}">
-            <div class="item-info">
-              <header>
-                <h4>${item.title}</h4>
-                <h4 class="price">$${item.price}</h4>
-              </header>
-              <p class="item-text">${item.desc}</p>
-            </div>
-           </article>`
-  })
-  displayMenu = displayMenu.join("")
-  sectionCenter.innerHTML = displayMenu
 }
 
 // Added Method 2 - more suitable
